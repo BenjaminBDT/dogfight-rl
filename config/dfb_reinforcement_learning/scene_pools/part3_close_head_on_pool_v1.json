@@ -1,0 +1,50 @@
+{
+  "train": {
+    "tactical_ratio": 1.0,
+    "recovery_ratio": 0.0,
+    "tactical": {
+      "existing": [],
+      "generated": [
+        {
+          "name": "close_head_on_low",
+          "template": "close_head_on",
+          "count": 24,
+          "weight": 0.50,
+          "seed": 6101,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "close_head_on_mid",
+          "template": "close_head_on",
+          "count": 24,
+          "weight": 0.50,
+          "seed": 6102,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        }
+      ]
+    },
+    "recovery": {
+      "existing": [],
+      "generated": []
+    }
+  },
+  "eval": {
+    "existing": [],
+    "generated": [
+      {
+        "name": "eval_close_head_on",
+        "template": "close_head_on",
+        "count": 8,
+        "weight": 1.0,
+        "seed": 6191,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open"
+      }
+    ]
+  }
+}

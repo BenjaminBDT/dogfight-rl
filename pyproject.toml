@@ -1,0 +1,30 @@
+[project]
+name = "dfb-python-workspace"
+version = "0.2.78"
+description = "Python-side tooling workspace for DFB training and data workflows."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy>=2.2,<3",
+    "pillow>=11.2,<12",
+    "soundfile>=0.13,<0.14",
+    "tqdm>=4.67,<5",
+]
+
+[dependency-groups]
+dev = [
+    "maturin>=1.8,<2",
+    "pytest>=8.3,<9",
+]
+train = [
+    "gymnasium>=1.1,<2",
+    "opencv-python-headless>=4.13.0.92",
+    "orjson>=3.10,<4",
+    "pandas>=2.2,<3",
+    "pyarrow>=19,<20",
+    "tensorboard>=2.19,<3",
+    "torch>=2.7,<3",
+    "torchvision>=0.22,<1",
+]
+
+[tool.uv]
+package = false

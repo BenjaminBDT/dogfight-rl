@@ -1,0 +1,36 @@
+{
+  "train": {
+    "tactical_ratio": 0.0,
+    "recovery_ratio": 1.0,
+    "tactical": {
+      "existing": [],
+      "generated": []
+    },
+    "recovery": {
+      "existing": [],
+      "generated": [
+        {
+          "name": "ground_recovery_extreme_f1_train",
+          "template": "ground_recovery_extreme",
+          "count": 32,
+          "weight": 1.0,
+          "seed": 3601,
+          "arena_preset": "standard_open"
+        }
+      ]
+    }
+  },
+  "eval": {
+    "existing": [],
+    "generated": [
+      {
+        "name": "ground_recovery_extreme_f1_eval",
+        "template": "ground_recovery_extreme",
+        "count": 4,
+        "weight": 1.0,
+        "seed": 3691,
+        "arena_preset": "standard_open"
+      }
+    ]
+  }
+}

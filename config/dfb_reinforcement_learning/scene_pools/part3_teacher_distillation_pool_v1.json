@@ -1,0 +1,103 @@
+{
+  "train": {
+    "tactical_ratio": 0.75,
+    "recovery_ratio": 0.25,
+    "tactical": {
+      "existing": [],
+      "generated": [
+        {
+          "name": "teacher_head_on",
+          "template": "head_on",
+          "count": 3,
+          "weight": 0.30,
+          "seed": 3101,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_tail_f1",
+          "template": "tail_chase",
+          "count": 2,
+          "weight": 0.20,
+          "seed": 3201,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1"
+        },
+        {
+          "name": "teacher_tail_f2",
+          "template": "tail_chase",
+          "count": 2,
+          "weight": 0.20,
+          "seed": 3301,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2"
+        },
+        {
+          "name": "teacher_offset_merge",
+          "template": "offset_merge",
+          "count": 2,
+          "weight": 0.15,
+          "seed": 3401,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_side_cut",
+          "template": "side_cut_in",
+          "count": 2,
+          "weight": 0.15,
+          "seed": 3501,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1"
+        }
+      ]
+    },
+    "recovery": {
+      "existing": [],
+      "generated": [
+        {
+          "name": "teacher_random_recovery",
+          "template": "random_recovery",
+          "count": 2,
+          "weight": 0.34,
+          "seed": 3601,
+          "altitude_profile": "low",
+          "boundary_profile": "near_edge",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_low_altitude",
+          "template": "low_altitude_recoverable",
+          "count": 2,
+          "weight": 0.33,
+          "seed": 3701,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_near_boundary",
+          "template": "near_boundary_recoverable",
+          "count": 2,
+          "weight": 0.33,
+          "seed": 3801,
+          "altitude_profile": "mid",
+          "boundary_profile": "near_edge",
+          "arena_preset": "standard_open"
+        }
+      ]
+    }
+  },
+  "eval": {
+    "existing": [],
+    "generated": []
+  }
+}

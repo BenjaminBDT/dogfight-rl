@@ -1,0 +1,25 @@
+[workspace]
+members = ["project_src/dfb_game"]
+default-members = ["project_src/dfb_game"]
+resolver = "3"
+
+[workspace.dependencies]
+anyhow = "1"
+bevy = { version = "0.18.1", default-features = true, features = ["wav", "debug"] }
+cpal = "0.15.3"
+crossterm = "0.29.0"
+half = "2.7"
+hex = "0.4"
+libc = "0.2"
+ndarray = "0.16"
+ndarray-npy = "0.9"
+pyo3 = "0.24.2"
+rand = "0.10.0"
+rand_chacha = "0.10.0"
+ratatui = "0.30.0"
+ron = "0.12.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+time = { version = "0.3", features = ["formatting", "local-offset", "macros"] }
+zip = "7.2.0"

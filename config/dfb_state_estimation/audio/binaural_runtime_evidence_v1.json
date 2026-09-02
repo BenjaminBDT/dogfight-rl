@@ -1,0 +1,41 @@
+{
+  "config_id": "binaural_runtime_evidence_v1",
+  "config_version": "1.0.0",
+  "input_features": {
+    "energy_field": "binaural_energy_t",
+    "cue_field": "binaural_cue_vector_t",
+    "energy_order": ["E_L", "E_R", "E_sum", "E_diff_norm"],
+    "cue_order": [
+      "gcc_peak_lag",
+      "gcc_peak_value",
+      "ild",
+      "ipd_low",
+      "ipd_mid",
+      "interaural_coherence",
+      "reverb_ratio_proxy",
+      "directness_proxy"
+    ]
+  },
+  "scale_initialization": {
+    "default_percentile": "P60",
+    "energy_scale_source": "training_distribution(E_sum)",
+    "gcc_scale_source": "training_distribution(gcc_peak_value)",
+    "reverb_scale_source": "training_distribution(reverb_ratio_proxy)",
+    "directness_scale_source": "training_distribution(directness_proxy)"
+  },
+  "runtime_terms": {
+    "a_energy": "1 - exp(-E_sum / energy_scale)",
+    "s_gcc": "1 - exp(-gcc_peak_value / gcc_scale)",
+    "s_coh": "clamp(interaural_coherence, 0, 1)",
+    "s_reverb": "1 - exp(-reverb_ratio_proxy / reverb_scale)",
+    "s_directness": "1 - exp(-directness_proxy / directness_scale)",
+    "s_direct": "0.5 * s_reverb + 0.5 * s_directness",
+    "a_cue": "pow(s_gcc * s_coh * s_direct, 1/3)",
+    "raw_audio_evidence_strength": "0.5 * a_energy + 0.5 * a_cue"
+  },
+  "notes": [
+    "a_energy and a_cue are runtime-only intermediate terms and are not exported as primary dataset fields.",
+    "interaural_coherence is treated as a native [0, 1] quantity and only receives numeric guarding.",
+    "gcc_peak_value, reverb_ratio_proxy, and directness_proxy use smooth monotonic mappings instead of hard clamp."
+  ]
+}

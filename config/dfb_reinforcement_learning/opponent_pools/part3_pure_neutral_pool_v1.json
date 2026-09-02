@@ -1,0 +1,9 @@
+{
+  "entries": [
+    {
+      "name": "neutral_external",
+      "kind": "external_neutral",
+      "weight": 1.0
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema_id": "fighter_surface_fps8_plus_center_v1",
+  "schema_version": "1.0.0",
+  "model_id": "fighter_plane_v1",
+  "coordinate_convention_id": "dfb_aircraft_body_rhs_forward_pos_z_v1",
+  "selection_method": "pvnet_style_surface_fps_with_manual_adjustment",
+  "surface_keypoint_count": 8,
+  "has_object_center": true,
+  "point_labels": [
+    "object_center",
+    "nose_tip",
+    "cockpit_top",
+    "left_wing_tip",
+    "right_wing_tip",
+    "tail_center",
+    "vertical_tail_top",
+    "left_tail_tip",
+    "right_tail_tip"
+  ],
+  "points_3d_object": {
+    "object_center": [0.0, 0.0, 0.0],
+    "nose_tip": [0.0, 0.0, 11.3],
+    "cockpit_top": [0.0, 0.975, 1.7],
+    "left_wing_tip": [11.4, 0.0, 0.0],
+    "right_wing_tip": [-11.4, 0.0, 0.0],
+    "tail_center": [0.0, 0.0, -7.9],
+    "vertical_tail_top": [0.0, 2.8, -7.0],
+    "left_tail_tip": [5.2, 0.0, -7.0],
+    "right_tail_tip": [-5.2, 0.0, -7.0]
+  },
+  "source_assets": {
+    "mesh_path": "assets/models/fighter_plane.gltf",
+    "notes": [
+      "This canonical v1 set is anchored to current fighter_plane.gltf node translations and mesh bounds.",
+      "The id is kept stable for downstream references; a later dedicated FPS tool may regenerate the same schema id only if point semantics remain equivalent."
+    ]
+  }
+}

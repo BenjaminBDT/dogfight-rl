@@ -1,0 +1,80 @@
+{
+  "train": {
+    "tactical_ratio": 0.0,
+    "recovery_ratio": 1.0,
+    "tactical": {
+      "existing": [],
+      "generated": []
+    },
+    "recovery": {
+      "existing": [],
+      "generated": [
+        {
+          "name": "recovery_random_low",
+          "template": "random_recovery",
+          "count": 12,
+          "weight": 0.10,
+          "seed": 501,
+          "altitude_profile": "low",
+          "boundary_profile": "near_edge",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "recovery_random_mid",
+          "template": "random_recovery",
+          "count": 12,
+          "weight": 0.10,
+          "seed": 601,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "wide_open"
+        },
+        {
+          "name": "recovery_mild_oob",
+          "template": "mild_oob_recoverable",
+          "count": 12,
+          "weight": 0.28,
+          "seed": 701,
+          "altitude_profile": "mid",
+          "boundary_profile": "near_edge",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "recovery_low_altitude",
+          "template": "low_altitude_recoverable",
+          "count": 12,
+          "weight": 0.28,
+          "seed": 801,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "recovery_near_boundary",
+          "template": "near_boundary_recoverable",
+          "count": 12,
+          "weight": 0.24,
+          "seed": 901,
+          "altitude_profile": "mid",
+          "boundary_profile": "near_edge",
+          "arena_preset": "boundary_pressure"
+        }
+      ]
+    }
+  },
+  "eval": {
+    "existing": [],
+    "generated": [
+      {
+        "name": "eval_recovery_low_altitude",
+        "template": "low_altitude_recoverable",
+        "count": 4,
+        "weight": 1.0,
+        "seed": 1801,
+        "altitude_profile": "low",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open"
+      }
+    ]
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "train": {
+    "tactical_ratio": 0.75,
+    "recovery_ratio": 0.25,
+    "tactical": {
+      "existing": [],
+      "generated": [
+        {
+          "name": "teacher_v3_head_on",
+          "template": "head_on",
+          "count": 113,
+          "weight": 0.30,
+          "seed": 13101,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_v3_tail_f1",
+          "template": "tail_chase",
+          "count": 75,
+          "weight": 0.20,
+          "seed": 13201,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1"
+        },
+        {
+          "name": "teacher_v3_tail_f2",
+          "template": "tail_chase",
+          "count": 75,
+          "weight": 0.20,
+          "seed": 13301,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2"
+        },
+        {
+          "name": "teacher_v3_offset_merge",
+          "template": "offset_merge",
+          "count": 56,
+          "weight": 0.15,
+          "seed": 13401,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_v3_side_cut",
+          "template": "side_cut_in",
+          "count": 56,
+          "weight": 0.15,
+          "seed": 13501,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1"
+        }
+      ]
+    },
+    "recovery": {
+      "existing": [],
+      "generated": [
+        {
+          "name": "teacher_v3_random_recovery",
+          "template": "random_recovery",
+          "count": 32,
+          "weight": 0.25,
+          "seed": 13601,
+          "altitude_profile": "low",
+          "boundary_profile": "near_edge",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_v3_low_altitude",
+          "template": "low_altitude_recoverable",
+          "count": 31,
+          "weight": 0.25,
+          "seed": 13701,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_v3_near_boundary",
+          "template": "near_boundary_recoverable",
+          "count": 31,
+          "weight": 0.25,
+          "seed": 13801,
+          "altitude_profile": "mid",
+          "boundary_profile": "near_edge",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_v3_safe_repair",
+          "template": "safe_repair_pair",
+          "count": 31,
+          "weight": 0.25,
+          "seed": 13901,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "damage_profile": "repairable_pair"
+        }
+      ]
+    }
+  },
+  "eval": {
+    "existing": [],
+    "generated": []
+  }
+}

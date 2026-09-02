@@ -1,0 +1,31 @@
+{
+  "schema_id": "surround_7_1_aircraft_body_regions_v1",
+  "status": "archived",
+  "schema_version": "1.0.0",
+  "coordinate_convention_id": "dfb_aircraft_body_rhs_forward_pos_z_v1",
+  "layout": "7.1",
+  "channel_order": ["FL", "FR", "FC", "LFE", "SL", "SR", "BL", "BR"],
+  "directional_channels": ["FL", "FR", "FC", "SL", "SR", "BL", "BR"],
+  "non_directional_channels": ["LFE"],
+  "direction_vectors_body": {
+    "FC": [0.0, 0.0, 1.0],
+    "FL": [0.70710678, 0.0, 0.70710678],
+    "FR": [-0.70710678, 0.0, 0.70710678],
+    "SL": [1.0, 0.0, 0.0],
+    "SR": [-1.0, 0.0, 0.0],
+    "BL": [0.70710678, 0.0, -0.70710678],
+    "BR": [-0.70710678, 0.0, -0.70710678]
+  },
+  "feature_rules": {
+    "channel_energy": "E_i = mean(x_i^2)",
+    "normalized_channel_energy": "E_hat_i = E_i / (sum_j E_j + epsilon)",
+    "directional_audio_vector": "v_dir = sum_i E_hat_i * d_i over directional channels only",
+    "runtime_a_dir": "a_dir = 1 - exp(-norm(v_dir) / dir_scale)",
+    "runtime_a_energy": "a_energy = 1 - exp(-sum_j E_j / energy_scale)"
+  },
+  "notes": [
+    "Aircraft body frame uses +Z forward, +X left, +Y up.",
+    "LFE contributes to energy features but is excluded from directional vector synthesis.",
+    "a_dir and a_energy are runtime-only intermediate terms and are not part of the offline dataset contract."
+  ]
+}

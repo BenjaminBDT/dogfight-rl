@@ -1,0 +1,114 @@
+{
+  "train": {
+    "tactical_ratio": 0.75,
+    "recovery_ratio": 0.25,
+    "tactical": {
+      "existing": [],
+      "generated": [
+        {
+          "name": "teacher_v3_dagger_r1_head_on",
+          "template": "head_on",
+          "count": 45,
+          "weight": 0.30,
+          "seed": 24101,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_v3_dagger_r1_tail_f1",
+          "template": "tail_chase",
+          "count": 30,
+          "weight": 0.20,
+          "seed": 24201,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1"
+        },
+        {
+          "name": "teacher_v3_dagger_r1_tail_f2",
+          "template": "tail_chase",
+          "count": 30,
+          "weight": 0.20,
+          "seed": 24301,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2"
+        },
+        {
+          "name": "teacher_v3_dagger_r1_offset_merge",
+          "template": "offset_merge",
+          "count": 23,
+          "weight": 0.15,
+          "seed": 24401,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_v3_dagger_r1_side_cut",
+          "template": "side_cut_in",
+          "count": 22,
+          "weight": 0.15,
+          "seed": 24501,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1"
+        }
+      ]
+    },
+    "recovery": {
+      "existing": [],
+      "generated": [
+        {
+          "name": "teacher_v3_dagger_r1_random_recovery",
+          "template": "random_recovery",
+          "count": 13,
+          "weight": 0.25,
+          "seed": 24601,
+          "altitude_profile": "low",
+          "boundary_profile": "near_edge",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_v3_dagger_r1_low_altitude",
+          "template": "low_altitude_recoverable",
+          "count": 13,
+          "weight": 0.25,
+          "seed": 24701,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_v3_dagger_r1_near_boundary",
+          "template": "near_boundary_recoverable",
+          "count": 12,
+          "weight": 0.25,
+          "seed": 24801,
+          "altitude_profile": "mid",
+          "boundary_profile": "near_edge",
+          "arena_preset": "standard_open"
+        },
+        {
+          "name": "teacher_v3_dagger_r1_safe_repair",
+          "template": "safe_repair_pair",
+          "count": 12,
+          "weight": 0.25,
+          "seed": 24901,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "damage_profile": "repairable_pair"
+        }
+      ]
+    }
+  },
+  "eval": {
+    "existing": [],
+    "generated": []
+  }
+}

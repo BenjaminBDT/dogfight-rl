@@ -1,0 +1,36 @@
+{
+  "train": {
+    "tactical_ratio": 1.0,
+    "recovery_ratio": 0.0,
+    "tactical": {
+      "existing": [
+        {
+          "scene_name": "open_ho",
+          "weight": 0.75
+        },
+        {
+          "scene_name": "open_tc_f1",
+          "weight": 0.25
+        }
+      ],
+      "generated": []
+    },
+    "recovery": {
+      "existing": [],
+      "generated": []
+    }
+  },
+  "eval": {
+    "existing": [
+      {
+        "scene_name": "open_ho",
+        "weight": 0.5
+      },
+      {
+        "scene_name": "open_tc_f1",
+        "weight": 0.5
+      }
+    ],
+    "generated": []
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_id": "binaural_cue_schema_v1",
+  "schema_version": "1.1.0",
+  "observation_field": "audio_window_binaural",
+  "layout": "binaural",
+  "channel_order": ["L", "R"],
+  "sample_rate_hz": 48000,
+  "window_semantics": {
+    "time_alignment": "one_short_window_per_simulation_step",
+    "window_seconds_source": "dataset_meta.audio_config.window_samples / sample_rate_hz"
+  },
+  "energy_features": {
+    "field": "binaural_energy_t",
+    "order": ["E_L", "E_R", "E_sum", "E_diff_norm"],
+    "definitions": {
+      "E_L": "mean(x_L^2)",
+      "E_R": "mean(x_R^2)",
+      "E_sum": "E_L + E_R",
+      "E_diff_norm": "(E_L - E_R) / (E_sum + epsilon)"
+    }
+  },
+  "cue_features": {
+    "field": "binaural_cue_vector_t",
+    "order": [
+      "gcc_peak_lag",
+      "gcc_peak_value",
+      "ild",
+      "ipd_low",
+      "ipd_mid",
+      "interaural_coherence",
+      "reverb_ratio_proxy",
+      "directness_proxy",
+      "ild_low_band_db",
+      "ild_high_band_db"
+    ],
+    "definitions": {
+      "gcc_peak_lag": "Lag of the dominant GCC-PHAT peak between left and right channels.",
+      "gcc_peak_value": "Strength of the dominant GCC-PHAT peak after PHAT normalization.",
+      "ild": "Interaural level difference derived from left/right channel energy.",
+      "ipd_low": "Low-band interaural phase difference summary.",
+      "ipd_mid": "Mid-band interaural phase difference summary.",
+      "interaural_coherence": "Normalized interaural coherence in [0, 1].",
+      "reverb_ratio_proxy": "Proxy for reverberant-versus-direct energy ratio used as a distance cue.",
+      "directness_proxy": "Proxy for direct-sound clarity / onset sharpness used as a distance cue.",
+      "ild_low_band_db": "Low-band interaural level difference in dB for roughly 200Hz-1.5kHz.",
+      "ild_high_band_db": "High-band interaural level difference in dB for roughly 1.5kHz-6kHz."
+    }
+  },
+  "runtime_evidence_rules": {
+    "a_energy": "1 - exp(-E_sum / energy_scale)",
+    "a_cue": "aggregate(mapped(gcc_peak_value), interaural_coherence, mapped(reverb_ratio_proxy), mapped(directness_proxy))",
+    "raw_audio_evidence_strength": "0.5 * a_energy + 0.5 * a_cue"
+  },
+  "notes": [
+    "This schema defines explicit binaural features for the Part 2 dataset contract.",
+    "delta_binaural_cue_t is not stored as a primary step-level field; it is computed explicitly before temporal token assembly.",
+    "This schema replaces the previous 7.1-direction-based training contract."
+  ]
+}

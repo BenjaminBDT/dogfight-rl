@@ -1,0 +1,14 @@
+{
+  "entries": [
+    {
+      "name": "sampled_history_ckpts",
+      "kind": "sampled_checkpoints",
+      "weight": 1.0,
+      "checkpoints": [
+        "../../../tmp/important_ckpt/update_0014.pt",
+        "../../../tmp/important_ckpt/6000_0014.pt",
+        "../../../tmp/important_ckpt/12416_0096.pt"
+      ]
+    }
+  ]
+}

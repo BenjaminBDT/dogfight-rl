@@ -1,0 +1,651 @@
+{
+  "train": {
+    "tactical_ratio": 0.5,
+    "recovery_ratio": 0.5,
+    "tactical": {
+      "existing": [
+        {
+          "scene_name": "open_ho",
+          "weight": 1.6
+        },
+        {
+          "scene_name": "open_tc_f1",
+          "weight": 1.6
+        },
+        {
+          "scene_name": "open_tc_f2",
+          "weight": 1.6
+        },
+        {
+          "scene_name": "open_om",
+          "weight": 1.2
+        },
+        {
+          "scene_name": "open_fighter1_side_cut_in",
+          "weight": 0.6
+        },
+        {
+          "scene_name": "open_fighter2_side_cut_in",
+          "weight": 0.6
+        },
+        {
+          "scene_name": "open_br_f1",
+          "weight": 0.8
+        },
+        {
+          "scene_name": "open_af_f1",
+          "weight": 0.4
+        },
+        {
+          "scene_name": "open_af_f2",
+          "weight": 0.4
+        }
+      ],
+      "generated": [
+        {
+          "name": "general_v2_head_on_low",
+          "template": "head_on",
+          "count": 48,
+          "weight": 3.2,
+          "seed": 21001,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_head_on_mid",
+          "template": "head_on",
+          "count": 48,
+          "weight": 4,
+          "seed": 21101,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_head_on_high",
+          "template": "head_on",
+          "count": 32,
+          "weight": 3.2,
+          "seed": 21201,
+          "altitude_profile": "high",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_tail_f1_low",
+          "template": "tail_chase",
+          "count": 32,
+          "weight": 2.4,
+          "seed": 21301,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_tail_f1_mid",
+          "template": "tail_chase",
+          "count": 32,
+          "weight": 3.2,
+          "seed": 21401,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_tail_f1_high",
+          "template": "tail_chase",
+          "count": 32,
+          "weight": 3.2,
+          "seed": 21501,
+          "altitude_profile": "high",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_tail_f2_low",
+          "template": "tail_chase",
+          "count": 32,
+          "weight": 2.4,
+          "seed": 21601,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_tail_f2_mid",
+          "template": "tail_chase",
+          "count": 32,
+          "weight": 3.2,
+          "seed": 21701,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_tail_f2_high",
+          "template": "tail_chase",
+          "count": 32,
+          "weight": 3.2,
+          "seed": 21801,
+          "altitude_profile": "high",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_offset_merge_low",
+          "template": "offset_merge",
+          "count": 32,
+          "weight": 2,
+          "seed": 21901,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_offset_merge_mid",
+          "template": "offset_merge",
+          "count": 32,
+          "weight": 2.4,
+          "seed": 22001,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_offset_merge_high",
+          "template": "offset_merge",
+          "count": 32,
+          "weight": 2.4,
+          "seed": 22101,
+          "altitude_profile": "high",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_side_cut_f1_low",
+          "template": "side_cut_in",
+          "count": 32,
+          "weight": 1.2,
+          "seed": 22201,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_side_cut_f1_mid",
+          "template": "side_cut_in",
+          "count": 32,
+          "weight": 1.4,
+          "seed": 22301,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_side_cut_f2_low",
+          "template": "side_cut_in",
+          "count": 32,
+          "weight": 1.2,
+          "seed": 22401,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_side_cut_f2_mid",
+          "template": "side_cut_in",
+          "count": 32,
+          "weight": 1.4,
+          "seed": 22501,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_boundary_f1",
+          "template": "boundary_return",
+          "count": 64,
+          "weight": 2,
+          "seed": 22601,
+          "altitude_profile": "mid",
+          "boundary_profile": "near_edge",
+          "arena_preset": "boundary_pressure",
+          "advantaged_role": "fighter1",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_boundary_f2",
+          "template": "boundary_return",
+          "count": 64,
+          "weight": 2,
+          "seed": 22701,
+          "altitude_profile": "mid",
+          "boundary_profile": "near_edge",
+          "arena_preset": "boundary_pressure",
+          "advantaged_role": "fighter2",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_aim_fire_f1_low",
+          "template": "aim_fire",
+          "count": 24,
+          "weight": 0.8,
+          "seed": 22801,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_aim_fire_f1_mid",
+          "template": "aim_fire",
+          "count": 24,
+          "weight": 0.8,
+          "seed": 22901,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_aim_fire_f2_low",
+          "template": "aim_fire",
+          "count": 24,
+          "weight": 0.8,
+          "seed": 23001,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_aim_fire_f2_mid",
+          "template": "aim_fire",
+          "count": 24,
+          "weight": 0.8,
+          "seed": 23101,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_constrained_random",
+          "template": "constrained_random_dogfight",
+          "count": 192,
+          "weight": 4,
+          "seed": 23201,
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v3_collision_course",
+          "template": "collision_course",
+          "count": 192,
+          "weight": 15,
+          "seed": 26001,
+          "arena_preset": "standard_open",
+          "damage_profile": "none"
+        }
+      ]
+    },
+    "recovery": {
+      "existing": [
+        {
+          "scene_name": "open_gr_f1",
+          "weight": 0.5
+        },
+        {
+          "scene_name": "open_lr_f1",
+          "weight": 0.75
+        },
+        {
+          "scene_name": "open_rr_f1",
+          "weight": 0.5
+        },
+        {
+          "scene_name": "open_oob_f1",
+          "weight": 0.5
+        },
+        {
+          "scene_name": "open_nb_f1",
+          "weight": 0.75
+        },
+        {
+          "scene_name": "open_sr_pair",
+          "weight": 0.5
+        }
+      ],
+      "generated": [
+        {
+          "name": "general_v2_ground_recovery",
+          "template": "ground_recovery",
+          "count": 96,
+          "weight": 3.5,
+          "seed": 23301,
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_low_altitude",
+          "template": "low_altitude_recoverable",
+          "count": 96,
+          "weight": 4.25,
+          "seed": 23401,
+          "altitude_profile": "low",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_random_recovery_low",
+          "template": "random_recovery",
+          "count": 48,
+          "weight": 1.5,
+          "seed": 23501,
+          "altitude_profile": "low",
+          "boundary_profile": "near_edge",
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_random_recovery_mid",
+          "template": "random_recovery",
+          "count": 64,
+          "weight": 2,
+          "seed": 23601,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "wide_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_mild_oob",
+          "template": "mild_oob_recoverable",
+          "count": 96,
+          "weight": 3.5,
+          "seed": 23701,
+          "altitude_profile": "mid",
+          "boundary_profile": "near_edge",
+          "arena_preset": "standard_open",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_near_boundary",
+          "template": "near_boundary_recoverable",
+          "count": 96,
+          "weight": 4.25,
+          "seed": 23801,
+          "altitude_profile": "mid",
+          "boundary_profile": "near_edge",
+          "arena_preset": "boundary_pressure",
+          "damage_profile": "combat_wear"
+        },
+        {
+          "name": "general_v2_safe_repair",
+          "template": "safe_repair_pair",
+          "count": 64,
+          "weight": 2.5,
+          "seed": 23901,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "damage_profile": "repairable_pair"
+        }
+      ]
+    }
+  },
+  "eval": {
+    "existing": [
+      {
+        "scene_name": "open_ho",
+        "weight": 1
+      },
+      {
+        "scene_name": "open_tc_f1",
+        "weight": 1
+      },
+      {
+        "scene_name": "open_tc_f2",
+        "weight": 1
+      },
+      {
+        "scene_name": "open_gr_f1",
+        "weight": 1
+      }
+    ],
+    "generated": [
+      {
+        "name": "eval_general_v2_head_on",
+        "template": "head_on",
+        "count": 2,
+        "weight": 1,
+        "seed": 31001,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_tail_f1",
+        "template": "tail_chase",
+        "count": 2,
+        "weight": 1,
+        "seed": 31101,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "advantaged_role": "fighter1",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_tail_f2",
+        "template": "tail_chase",
+        "count": 2,
+        "weight": 1,
+        "seed": 31201,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "advantaged_role": "fighter2",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_offset_merge",
+        "template": "offset_merge",
+        "count": 2,
+        "weight": 1,
+        "seed": 31301,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_side_cut_f1",
+        "template": "side_cut_in",
+        "count": 1,
+        "weight": 1,
+        "seed": 31401,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "advantaged_role": "fighter1",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_side_cut_f2",
+        "template": "side_cut_in",
+        "count": 1,
+        "weight": 1,
+        "seed": 31501,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "advantaged_role": "fighter2",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_boundary_f1",
+        "template": "boundary_return",
+        "count": 1,
+        "weight": 1,
+        "seed": 31601,
+        "altitude_profile": "mid",
+        "boundary_profile": "near_edge",
+        "arena_preset": "boundary_pressure",
+        "advantaged_role": "fighter1",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_boundary_f2",
+        "template": "boundary_return",
+        "count": 1,
+        "weight": 1,
+        "seed": 31701,
+        "altitude_profile": "mid",
+        "boundary_profile": "near_edge",
+        "arena_preset": "boundary_pressure",
+        "advantaged_role": "fighter2",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_aim_fire_f1",
+        "template": "aim_fire",
+        "count": 1,
+        "weight": 1,
+        "seed": 31801,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "advantaged_role": "fighter1",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_aim_fire_f2",
+        "template": "aim_fire",
+        "count": 1,
+        "weight": 1,
+        "seed": 31901,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "advantaged_role": "fighter2",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_constrained_random",
+        "template": "constrained_random_dogfight",
+        "count": 4,
+        "weight": 1,
+        "seed": 32001,
+        "arena_preset": "standard_open",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_ground_recovery",
+        "template": "ground_recovery",
+        "count": 2,
+        "weight": 1,
+        "seed": 32101,
+        "arena_preset": "standard_open",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_low_altitude",
+        "template": "low_altitude_recoverable",
+        "count": 2,
+        "weight": 1,
+        "seed": 32201,
+        "altitude_profile": "low",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_random_recovery",
+        "template": "random_recovery",
+        "count": 2,
+        "weight": 1,
+        "seed": 32301,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "wide_open",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_mild_oob",
+        "template": "mild_oob_recoverable",
+        "count": 2,
+        "weight": 1,
+        "seed": 32401,
+        "altitude_profile": "mid",
+        "boundary_profile": "near_edge",
+        "arena_preset": "standard_open",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_near_boundary",
+        "template": "near_boundary_recoverable",
+        "count": 2,
+        "weight": 1,
+        "seed": 32501,
+        "altitude_profile": "mid",
+        "boundary_profile": "near_edge",
+        "arena_preset": "boundary_pressure",
+        "damage_profile": "combat_wear"
+      },
+      {
+        "name": "eval_general_v2_safe_repair",
+        "template": "safe_repair_pair",
+        "count": 2,
+        "weight": 1,
+        "seed": 32601,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "damage_profile": "repairable_pair"
+      },
+      {
+        "name": "general_v3_eval_collision_course",
+        "template": "collision_course",
+        "count": 4,
+        "weight": 1,
+        "seed": 36001,
+        "arena_preset": "standard_open",
+        "damage_profile": "none"
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "config_version": "1",
+  "run_name": "segmentation_only_synthetic_target_fighter2_single_view_v6_full10k_binary_ce_rebalanced_resnet18_fpn_target_patch64",
+  "dataset_root": "runs/dfb_state_estimation/synthetic_visual_dataset_fix_v6_20k_target_identity/target_fighter2/clean",
+  "dataset_format": "synthetic_segmentation",
+  "output_root": "runs/dfb_state_estimation/train/segmentation_only_synthetic_target_fighter2_single_view_v6_full10k_binary_ce_rebalanced_resnet18_fpn_target_patch64",
+  "seed": 7,
+  "device": "cuda",
+  "stage": "segmentation_only",
+  "segmentation_label_mode": "binary_target",
+  "optimizer": {
+    "name": "adam",
+    "lr": 0.0003,
+    "weight_decay": 0.0001
+  },
+  "schedule": {
+    "num_steps": 3500,
+    "batch_size": 4,
+    "grad_clip_norm": 1.0,
+    "log_interval": 20,
+    "eval_interval": 100,
+    "save_interval": 100
+  },
+  "single_step": {
+    "step_index": 0
+  },
+  "single_step_loss_weights": {
+    "vision": 1.0,
+    "audio": 0.0,
+    "evidence": 0.0
+  },
+  "segmentation_class_weights": {
+    "background": 1.0,
+    "other_aircraft": 1.0,
+    "target": 8.0
+  },
+  "segmentation_loss": {
+    "mode": "ce",
+    "focal_gamma": 2.0,
+    "dice_weight": 0.0
+  },
+  "segmentation_roi_crop": {
+    "enabled": false,
+    "context_scale": 2.0,
+    "min_crop_size": 64,
+    "square": true
+  },
+  "segmentation_target_patch": {
+    "enabled": true,
+    "patch_size": 64,
+    "positive_views_only": true
+  },
+  "vision_backbone": {
+    "name": "resnet18",
+    "pretrained": true
+  },
+  "temporal_modality": {
+    "window_index": 0,
+    "max_steps": 4,
+    "min_stride_steps": 1,
+    "max_stride_steps": 3
+  },
+  "temporal_belief": {
+    "window_index": 0,
+    "max_steps": 4,
+    "min_stride_steps": 1,
+    "max_stride_steps": 3
+  }
+}

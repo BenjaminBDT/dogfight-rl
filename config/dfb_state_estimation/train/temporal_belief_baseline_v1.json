@@ -1,0 +1,37 @@
+{
+  "config_version": "v1",
+  "run_name": "temporal_belief_baseline_v1",
+  "dataset_root": "runs/dfb_state_estimation/open-20260409-173309-test_pack",
+  "output_root": "runs/dfb_state_estimation/train/temporal_belief_baseline_v1",
+  "seed": 0,
+  "device": "cuda",
+  "stage": "temporal_belief",
+  "optimizer": {
+    "name": "adam",
+    "lr": 0.001,
+    "weight_decay": 0.0
+  },
+  "schedule": {
+    "num_steps": 300,
+    "batch_size": 2,
+    "grad_clip_norm": 1.0,
+    "log_interval": 20,
+    "eval_interval": 50,
+    "save_interval": 100
+  },
+  "single_step": {
+    "step_index": 0
+  },
+  "temporal_modality": {
+    "window_index": 0,
+    "max_steps": 8,
+    "min_stride_steps": 1,
+    "max_stride_steps": 1
+  },
+  "temporal_belief": {
+    "window_index": 0,
+    "max_steps": 8,
+    "min_stride_steps": 1,
+    "max_stride_steps": 1
+  }
+}

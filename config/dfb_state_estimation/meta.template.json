@@ -1,0 +1,67 @@
+{
+  "dataset_id": "replace_with_dataset_id",
+  "dataset_version": "1.0.0",
+  "schema_id": "dfb_state_estimation_dataset_schema_v2",
+  "schema_version": "2.0.0",
+  "schema_path": "config/dfb_state_estimation/schema.json",
+  "asset_ids_path": "config/dfb_state_estimation/ids/asset_ids.json",
+  "coordinate_convention_id": "dfb_aircraft_body_rhs_forward_pos_z_v1",
+  "keypoint_schema_id": "fighter_surface_fps8_plus_center_v1",
+  "keypoint_schema_path": "config/dfb_state_estimation/keypoints/fighter_surface_fps8_plus_center_v1.json",
+  "audio_cue_schema_id": "binaural_cue_schema_v1",
+  "audio_cue_schema_path": "config/dfb_state_estimation/audio/binaural_cue_schema_v1.json",
+  "time_semantics": {
+    "physical_storage_step": "simulation_step",
+    "view_step": "model_step",
+    "view_sampling": "non_uniform_sampling_from_simulation_steps",
+    "allow_sampling_interval_jitter": true
+  },
+  "storage_layout": {
+    "format": "chunked_npz",
+    "groups": [
+      "core",
+      "vision_labels",
+      "audio_features",
+      "rule_targets"
+    ],
+    "runtime_only_groups": [
+      "runtime_only"
+    ]
+  },
+  "visual_config": {
+    "camera_ids": ["front", "rear"],
+    "resolution": {
+      "width": 0,
+      "height": 0
+    },
+    "segmentation_classes": ["background", "fighter1", "fighter2"]
+  },
+  "audio_config": {
+    "layout": "binaural",
+    "channel_order": ["L", "R"],
+    "window_samples": 0,
+    "sample_rate_hz": 0,
+    "energy_feature_order": ["E_L", "E_R", "E_sum", "E_diff_norm"],
+    "cue_feature_order": [
+      "gcc_peak_lag",
+      "gcc_peak_value",
+      "ild",
+      "ipd_low",
+      "ipd_mid",
+      "interaural_coherence",
+      "reverb_ratio_proxy",
+      "directness_proxy"
+    ]
+  },
+  "splits": {
+    "train": [],
+    "val": [],
+    "test": []
+  },
+  "episodes": [],
+  "chunks": [],
+  "statistics": {
+    "total_simulation_steps": 0,
+    "total_model_steps": 0
+  }
+}

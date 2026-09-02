@@ -1,0 +1,43 @@
+{
+  "entries": [
+    {
+      "name": "builtin_default",
+      "kind": "built_in_ai",
+      "mode": "built_in_ai",
+      "weight": 0.25
+    },
+    {
+      "name": "builtin_precise",
+      "kind": "built_in_ai",
+      "mode": "built_in_ai_precise",
+      "weight": 0.15
+    },
+    {
+      "name": "builtin_imperfect",
+      "kind": "built_in_ai",
+      "mode": "built_in_ai_imperfect",
+      "weight": 0.15
+    },
+    {
+      "name": "neutral_external",
+      "kind": "external_neutral",
+      "weight": 0.15
+    },
+    {
+      "name": "fixed_update_0014",
+      "kind": "fixed_checkpoint",
+      "weight": 0.15,
+      "checkpoint": "../../../tmp/important_ckpt/update_0014.pt"
+    },
+    {
+      "name": "sampled_history_ckpts",
+      "kind": "sampled_checkpoints",
+      "weight": 0.15,
+      "checkpoints": [
+        "../../../tmp/important_ckpt/update_0014.pt",
+        "../../../tmp/important_ckpt/6000_0014.pt",
+        "../../../tmp/important_ckpt/12416_0096.pt"
+      ]
+    }
+  ]
+}

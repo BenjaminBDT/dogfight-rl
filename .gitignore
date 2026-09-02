@@ -1,0 +1,10 @@
+/target
+/tmp
+/recordings
+/datasets
+/dist
+/.codex
+
+/runs
+/__pycache__/
+*.pyc

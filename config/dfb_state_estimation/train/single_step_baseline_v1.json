@@ -1,0 +1,42 @@
+{
+  "config_version": "v1",
+  "run_name": "single_step_baseline_v1",
+  "dataset_root": "runs/dfb_state_estimation/open-20260409-173309-test_pack",
+  "output_root": "runs/dfb_state_estimation/train/single_step_baseline_v1",
+  "seed": 0,
+  "device": "cuda",
+  "stage": "single_step",
+  "optimizer": {
+    "name": "adam",
+    "lr": 0.001,
+    "weight_decay": 0.0
+  },
+  "schedule": {
+    "num_steps": 1000,
+    "batch_size": 8,
+    "grad_clip_norm": 1.0,
+    "log_interval": 20,
+    "eval_interval": 100,
+    "save_interval": 200
+  },
+  "single_step": {
+    "step_index": 0
+  },
+  "single_step_loss_weights": {
+    "vision": 1.0,
+    "audio": 1.0,
+    "evidence": 0.01
+  },
+  "temporal_modality": {
+    "window_index": 10,
+    "max_steps": 8,
+    "min_stride_steps": 1,
+    "max_stride_steps": 1
+  },
+  "temporal_belief": {
+    "window_index": 10,
+    "max_steps": 8,
+    "min_stride_steps": 1,
+    "max_stride_steps": 1
+  }
+}

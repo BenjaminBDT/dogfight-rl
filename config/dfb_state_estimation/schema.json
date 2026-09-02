@@ -1,0 +1,393 @@
+{
+  "schema_version": "2.0.0",
+  "schema_id": "dfb_state_estimation_dataset_schema_v2",
+  "description": "Canonical machine-readable contract for Part 2 dataset storage and dataset views.",
+  "asset_refs": {
+    "ids_manifest_path": "config/dfb_state_estimation/ids/asset_ids.json",
+    "default_keypoint_schema_path": "config/dfb_state_estimation/keypoints/fighter_surface_fps8_plus_center_v1.json",
+    "default_audio_cue_schema_path": "config/dfb_state_estimation/audio/binaural_cue_schema_v1.json"
+  },
+  "conventions": {
+    "coordinate_convention_id": "dfb_aircraft_body_rhs_forward_pos_z_v1",
+    "world_frame": {
+      "handedness": "right",
+      "up_axis": "+Y",
+      "horizontal_plane": "XZ"
+    },
+    "aircraft_body_frame": {
+      "forward": "+Z",
+      "left": "+X",
+      "up": "+Y"
+    },
+    "camera_local_frame": {
+      "forward": "-Z",
+      "right": "+X",
+      "up": "+Y"
+    },
+    "image_frame": {
+      "origin": "top_left",
+      "x_axis": "right",
+      "y_axis": "down"
+    },
+    "orientation_representation": "rotation_6d",
+    "time_semantics": {
+      "physical_storage_step": "simulation_step",
+      "view_step": "model_step",
+      "view_sampling": "non_uniform_sampling_from_simulation_steps",
+      "allow_sampling_interval_jitter": true
+    }
+  },
+  "storage_schema": {
+    "storage_unit": "chunked_npz",
+    "chunk_step_level": "simulation_step",
+    "group_order": [
+      "core",
+      "vision_labels",
+      "audio_features",
+      "rule_targets",
+      "runtime_only"
+    ],
+    "groups": {
+      "core": {
+        "stored": true,
+        "description": "Primary inputs, ego/camera context, and authoritative per-step labels.",
+        "fields": {
+          "simulation_step_index": {
+            "dtype": "int32",
+            "shape": ["N"],
+            "semantic": "Simulation-step index inside the episode."
+          },
+          "timestamp": {
+            "dtype": "float64",
+            "shape": ["N"],
+            "semantic": "Wall-clock or simulation time of the simulation step, in seconds."
+          },
+          "front_camera_image": {
+            "dtype": "uint8",
+            "shape": ["N", "H", "W", 4],
+            "semantic": "RGBA frame from the front camera at simulation-step granularity."
+          },
+          "rear_camera_image": {
+            "dtype": "uint8",
+            "shape": ["N", "H", "W", 4],
+            "semantic": "RGBA frame from the rear camera at simulation-step granularity."
+          },
+          "audio_window_binaural": {
+            "dtype": "float32",
+            "shape": ["N", "S", 2],
+            "semantic": "Short-window binaural audio waveform aligned to each simulation step."
+          },
+          "ego_position_world": {
+            "dtype": "float32",
+            "shape": ["N", 3],
+            "coordinate_frame": "world",
+            "semantic": "Ego aircraft position in world frame."
+          },
+          "ego_orientation_world": {
+            "dtype": "float32",
+            "shape": ["N", 6],
+            "representation": "rotation_6d",
+            "coordinate_frame": "world",
+            "semantic": "Ego aircraft orientation in world frame."
+          },
+          "ego_linear_velocity_world": {
+            "dtype": "float32",
+            "shape": ["N", 3],
+            "coordinate_frame": "world",
+            "semantic": "Ego aircraft linear velocity in world frame."
+          },
+          "ego_angular_velocity_body": {
+            "dtype": "float32",
+            "shape": ["N", 3],
+            "coordinate_frame": "aircraft_body",
+            "semantic": "Ego aircraft angular velocity in aircraft body frame."
+          },
+          "camera_extrinsics_front": {
+            "dtype": "float32",
+            "shape": ["N", 9],
+            "semantic": "Front camera extrinsics in aircraft body frame: 3 position + 6 orientation."
+          },
+          "camera_extrinsics_rear": {
+            "dtype": "float32",
+            "shape": ["N", 9],
+            "semantic": "Rear camera extrinsics in aircraft body frame: 3 position + 6 orientation."
+          },
+          "gt_relative_position": {
+            "dtype": "float32",
+            "shape": ["N", 3],
+            "coordinate_frame": "aircraft_body",
+            "semantic": "Enemy relative position in ego aircraft body frame."
+          },
+          "gt_relative_orientation": {
+            "dtype": "float32",
+            "shape": ["N", 6],
+            "representation": "rotation_6d",
+            "coordinate_frame": "aircraft_body",
+            "semantic": "Enemy relative orientation in ego aircraft body frame."
+          },
+          "gt_linear_velocity": {
+            "dtype": "float32",
+            "shape": ["N", 3],
+            "coordinate_frame": "aircraft_body",
+            "semantic": "Enemy relative linear velocity target."
+          },
+          "gt_angular_velocity": {
+            "dtype": "float32",
+            "shape": ["N", 3],
+            "coordinate_frame": "aircraft_body",
+            "semantic": "Enemy relative angular velocity target."
+          }
+        }
+      },
+      "vision_labels": {
+        "stored": true,
+        "description": "Per-camera segmentation and keypoint labels exported from Part 1.",
+        "fields": {
+          "segmentation_mask_front": {
+            "dtype": "uint8",
+            "shape": ["N", "H", "W"],
+            "classes": ["background", "fighter1", "fighter2"],
+            "semantic": "Front camera semantic segmentation mask."
+          },
+          "segmentation_mask_rear": {
+            "dtype": "uint8",
+            "shape": ["N", "H", "W"],
+            "classes": ["background", "fighter1", "fighter2"],
+            "semantic": "Rear camera semantic segmentation mask."
+          },
+          "keypoints_2d_front": {
+            "dtype": "float32",
+            "shape": ["N", "K", 2],
+            "coordinate_frame": "image",
+            "semantic": "Front camera projected keypoints."
+          },
+          "keypoints_2d_rear": {
+            "dtype": "float32",
+            "shape": ["N", "K", 2],
+            "coordinate_frame": "image",
+            "semantic": "Rear camera projected keypoints."
+          },
+          "keypoint_visibility_front": {
+            "dtype": "uint8",
+            "shape": ["N", "K"],
+            "semantic": "Binary visibility mask for front camera keypoints."
+          },
+          "keypoint_visibility_rear": {
+            "dtype": "uint8",
+            "shape": ["N", "K"],
+            "semantic": "Binary visibility mask for rear camera keypoints."
+          },
+          "keypoint_voting_pixels_front": {
+            "dtype": "uint16",
+            "shape": ["N", "P", 2],
+            "coordinate_frame": "image",
+            "semantic": "Front camera sparse foreground pixel coordinates used for keypoint voting supervision, padded to per-chunk length P."
+          },
+          "keypoint_voting_pixels_rear": {
+            "dtype": "uint16",
+            "shape": ["N", "P", 2],
+            "coordinate_frame": "image",
+            "semantic": "Rear camera sparse foreground pixel coordinates used for keypoint voting supervision, padded to per-chunk length P."
+          },
+          "keypoint_voting_unit_vectors_front": {
+            "dtype": "float32",
+            "shape": ["N", "P", "K", 2],
+            "coordinate_frame": "image",
+            "semantic": "Front camera sparse unit-vector voting supervision from foreground pixels to all keypoints, padded to per-chunk length P."
+          },
+          "keypoint_voting_unit_vectors_rear": {
+            "dtype": "float32",
+            "shape": ["N", "P", "K", 2],
+            "coordinate_frame": "image",
+            "semantic": "Rear camera sparse unit-vector voting supervision from foreground pixels to all keypoints, padded to per-chunk length P."
+          },
+          "keypoint_voting_mask_front": {
+            "dtype": "uint8",
+            "shape": ["N", "P"],
+            "semantic": "Front camera sparse voting supervision valid-mask for padded foreground pixel slots."
+          },
+          "keypoint_voting_mask_rear": {
+            "dtype": "uint8",
+            "shape": ["N", "P"],
+            "semantic": "Rear camera sparse voting supervision valid-mask for padded foreground pixel slots."
+          }
+        }
+      },
+      "audio_features": {
+        "stored": true,
+        "description": "Precomputed audio structural features derived from binaural waveform windows.",
+        "fields": {
+          "binaural_energy_t": {
+            "dtype": "float32",
+            "shape": ["N", 4],
+            "order": ["E_L", "E_R", "E_sum", "E_diff_norm"],
+            "semantic": "Per-step binaural energy summary."
+          },
+          "binaural_cue_vector_t": {
+            "dtype": "float32",
+            "shape": ["N", 8],
+            "order": [
+              "gcc_peak_lag",
+              "gcc_peak_value",
+              "ild",
+              "ipd_low",
+              "ipd_mid",
+              "interaural_coherence",
+              "reverb_ratio_proxy",
+              "directness_proxy"
+            ],
+            "semantic": "Per-step explicit binaural cue vector."
+          }
+        }
+      },
+      "rule_targets": {
+        "stored": true,
+        "description": "Precomputed rule-derived supervision targets with stable offline semantics.",
+        "fields": {
+          "gt_doa_unit_vector_body": {
+            "dtype": "float32",
+            "shape": ["N", 3],
+            "coordinate_frame": "aircraft_body",
+            "semantic": "Ground-truth unit DOA vector derived from gt_relative_position."
+          },
+          "gt_log_distance_scalar": {
+            "dtype": "float32",
+            "shape": ["N"],
+            "semantic": "Ground-truth log-distance scalar derived from gt_relative_position."
+          },
+          "target_pos_conf": {
+            "dtype": "float32",
+            "shape": ["N"],
+            "range": [0.0, 1.0],
+            "semantic": "Rule-derived target for position confidence."
+          },
+          "target_ori_conf": {
+            "dtype": "float32",
+            "shape": ["N"],
+            "range": [0.0, 1.0],
+            "semantic": "Rule-derived target for orientation confidence."
+          }
+        }
+      },
+      "runtime_only": {
+        "stored": false,
+        "description": "Runtime-only geometric verification quantities depending on model predictions.",
+        "fields": {
+          "pnp_valid": {
+            "dtype": "bool",
+            "shape": ["N"],
+            "semantic": "Runtime geometric solve validity flag."
+          },
+          "reprojection_error": {
+            "dtype": "float32",
+            "shape": ["N"],
+            "semantic": "Runtime reprojection error produced after single-step visual inference."
+          }
+        }
+      }
+    }
+  },
+  "view_schema": {
+    "StepSample": {
+      "source_step_level": "model_step",
+      "description": "Single model-step sample for single-step encoders and evidence extraction.",
+      "required_fields": [
+        "sample_id",
+        "episode_id",
+        "simulation_step_index",
+        "model_step_index",
+        "timestamp",
+        "dt_to_prev",
+        "time_from_now",
+        "has_prev_step",
+        "front_camera_image",
+        "rear_camera_image",
+        "audio_window_binaural",
+        "ego_position_world",
+        "ego_orientation_world",
+        "ego_linear_velocity_world",
+        "ego_angular_velocity_body",
+        "camera_extrinsics_front",
+        "camera_extrinsics_rear",
+        "gt_relative_position",
+        "gt_relative_orientation",
+        "gt_linear_velocity",
+        "gt_angular_velocity",
+        "segmentation_mask_front",
+        "segmentation_mask_rear",
+        "keypoints_2d_front",
+        "keypoints_2d_rear",
+        "keypoint_visibility_front",
+        "keypoint_visibility_rear",
+        "keypoint_voting_pixels_front",
+        "keypoint_voting_pixels_rear",
+        "keypoint_voting_unit_vectors_front",
+        "keypoint_voting_unit_vectors_rear",
+        "keypoint_voting_mask_front",
+        "keypoint_voting_mask_rear",
+        "binaural_energy_t",
+        "binaural_cue_vector_t",
+        "gt_doa_unit_vector_body",
+        "gt_log_distance_scalar",
+        "target_pos_conf",
+        "target_ori_conf"
+      ]
+    },
+    "WindowSample": {
+      "source_step_level": "model_step_window",
+      "description": "Windowed model-step sample ending at t for temporal stages.",
+      "derived_from": "StepSample",
+      "window_policy": {
+        "time_horizon_key": "window_seconds",
+        "max_steps_key": "max_steps",
+        "padding": "allowed",
+        "window_end": "current_model_step"
+      },
+      "window_fields": [
+        "timestamps",
+        "dt_to_prev",
+        "time_from_now",
+        "has_prev_step",
+        "front_camera_image",
+        "rear_camera_image",
+        "audio_window_binaural",
+        "ego_position_world",
+        "ego_orientation_world",
+        "ego_linear_velocity_world",
+        "ego_angular_velocity_body",
+        "camera_extrinsics_front",
+        "camera_extrinsics_rear",
+        "gt_relative_position",
+        "gt_relative_orientation",
+        "gt_linear_velocity",
+        "gt_angular_velocity",
+        "segmentation_mask_front",
+        "segmentation_mask_rear",
+        "keypoints_2d_front",
+        "keypoints_2d_rear",
+        "keypoint_visibility_front",
+        "keypoint_visibility_rear",
+        "keypoint_voting_pixels_front",
+        "keypoint_voting_pixels_rear",
+        "keypoint_voting_unit_vectors_front",
+        "keypoint_voting_unit_vectors_rear",
+        "keypoint_voting_mask_front",
+        "keypoint_voting_mask_rear",
+        "binaural_energy_t",
+        "binaural_cue_vector_t",
+        "gt_doa_unit_vector_body",
+        "gt_log_distance_scalar",
+        "target_pos_conf",
+        "target_ori_conf"
+      ],
+      "window_metadata_fields": [
+        "episode_id",
+        "window_end_model_step_index",
+        "window_end_simulation_step_index",
+        "window_length_steps",
+        "window_time_span",
+        "window_valid_mask"
+      ]
+    }
+  }
+}

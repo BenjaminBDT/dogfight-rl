@@ -1,0 +1,46 @@
+{
+  "bundle_name": "synthetic_visual_single_step_v6_dual_target_10k_each_bundle",
+  "bundle_version": "v6",
+  "created_on": "2026-04-29",
+  "description": "Dual-target upload bundle containing target-identity segmentation clean roots and full10k synthetic single-step expansions for fighter1 and fighter2.",
+  "upload_policy": {
+    "exclude_clean_top_level_dirs": [
+      "rgb",
+      "metadata",
+      "seg_color"
+    ],
+    "exclude_clean_sample_files": [
+      "front_segmentation_color.ppm",
+      "rear_segmentation_color.ppm"
+    ],
+    "keep_single_step_complete": true
+  },
+  "datasets": [
+    {
+      "name": "target_fighter2_clean",
+      "path": "runs/dfb_state_estimation/synthetic_visual_dataset_fix_v6_20k_target_identity/target_fighter2/clean",
+      "kind": "segmentation_clean",
+      "entries": 10000
+    },
+    {
+      "name": "target_fighter1_clean",
+      "path": "runs/dfb_state_estimation/synthetic_visual_dataset_fix_v6_20k_target_identity/target_fighter1/clean",
+      "kind": "segmentation_clean",
+      "entries": 10000
+    },
+    {
+      "name": "target_fighter2_single_step_full10k",
+      "path": "runs/dfb_state_estimation/synthetic_single_step_v6_target_fighter2_full10k",
+      "kind": "single_step_full",
+      "entries": 10000,
+      "source_dataset_root": "runs/dfb_state_estimation/synthetic_visual_dataset_fix_v6_20k_target_identity/target_fighter2/clean"
+    },
+    {
+      "name": "target_fighter1_single_step_full10k",
+      "path": "runs/dfb_state_estimation/synthetic_single_step_v6_target_fighter1_full10k",
+      "kind": "single_step_full",
+      "entries": 10000,
+      "source_dataset_root": "runs/dfb_state_estimation/synthetic_visual_dataset_fix_v6_20k_target_identity/target_fighter1/clean"
+    }
+  ]
+}

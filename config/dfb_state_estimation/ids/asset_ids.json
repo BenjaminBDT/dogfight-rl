@@ -1,0 +1,39 @@
+{
+  "manifest_id": "dfb_state_estimation_asset_ids_v2",
+  "manifest_version": "2.0.0",
+  "coordinate_conventions": [
+    {
+      "id": "dfb_aircraft_body_rhs_forward_pos_z_v1",
+      "description": "Right-handed aircraft body frame with +Z forward, +X left, +Y up; camera local frame remains graphics-style -Z forward.",
+      "source": "config/dfb_state_estimation/schema.json"
+    }
+  ],
+  "dataset_schemas": [
+    {
+      "id": "dfb_state_estimation_dataset_schema_v2",
+      "path": "config/dfb_state_estimation/schema.json",
+      "default": true
+    }
+  ],
+  "keypoint_schemas": [
+    {
+      "id": "fighter_surface_fps8_plus_center_v1",
+      "path": "config/dfb_state_estimation/keypoints/fighter_surface_fps8_plus_center_v1.json",
+      "default": true
+    }
+  ],
+  "audio_cue_schemas": [
+    {
+      "id": "binaural_cue_schema_v1",
+      "path": "config/dfb_state_estimation/audio/binaural_cue_schema_v1.json",
+      "default": true
+    }
+  ],
+  "audio_runtime_configs": [
+    {
+      "id": "binaural_runtime_evidence_v1",
+      "path": "config/dfb_state_estimation/audio/binaural_runtime_evidence_v1.json",
+      "default": true
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "config_version": "0.1.236",
+  "run_name": "audio_only_recordings_dual_observer_min20s_overfit256",
+  "dataset_root": "runs/dfb_state_estimation/audio_only_recordings_dual_observer_min20s_v1_subsets/overfit_0256",
+  "dataset_format": "audio_only_recordings",
+  "output_root": "runs/dfb_state_estimation/train/audio_only_recordings_dual_observer_min20s_overfit256",
+  "init_vision_from": null,
+  "init_segmentation_from": null,
+  "seed": 42,
+  "device": "cuda",
+  "stage": "audio_only",
+  "segmentation_label_mode": "multiclass_absolute",
+  "optimizer": {
+    "name": "adam",
+    "lr": 0.0003,
+    "weight_decay": 0.0001
+  },
+  "schedule": {
+    "num_steps": 4000,
+    "batch_size": 32,
+    "grad_clip_norm": 1.0,
+    "log_interval": 10,
+    "eval_interval": 100,
+    "save_interval": 200,
+    "num_workers": 4,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "prefetch_factor": 2
+  },
+  "single_step": {
+    "step_index": 0
+  },
+  "single_step_loss_weights": {
+    "vision": 0.0,
+    "audio": 1.0,
+    "evidence": 0.0
+  },
+  "audio_loss_weights": {
+    "doa": 1.0,
+    "distance": 1.0,
+    "doa_confidence": 1.0,
+    "distance_confidence": 1.0
+  },
+  "audio_confidence": {
+    "doa_half_angle_degrees": 30.0,
+    "dist_half_error": 0.5
+  },
+  "vision_loss_weights": {
+    "segmentation": 1.0,
+    "keypoints": 1.0,
+    "keypoint_voting": 1.0
+  },
+  "keypoint_supervision": {
+    "visible_weight": 1.0,
+    "projectable_inframe_weight": 0.25
+  },
+  "aggregation_training": {
+    "gt_foreground_mix": 0.0
+  },
+  "vision_freeze": {
+    "segmentation_module": false
+  },
+  "optimizer_group_scales": {
+    "vision_backbone": 1.0,
+    "vision_segmentation_head": 1.0,
+    "vision_keypoint_head": 1.0,
+    "vision_embedding_head": 1.0,
+    "audio": 1.0,
+    "evidence": 1.0
+  },
+  "single_step_sampling": {
+    "small_target_area_threshold": 0,
+    "small_target_weight": 1.0,
+    "medium_target_area_threshold": 0,
+    "medium_target_weight": 1.0
+  },
+  "segmentation_class_weights": {
+    "background": 1.0,
+    "other_aircraft": 1.0,
+    "target": 1.0
+  },
+  "segmentation_loss": {
+    "mode": "ce",
+    "focal_gamma": 2.0,
+    "dice_weight": 0.0
+  },
+  "segmentation_roi_crop": {
+    "enabled": false,
+    "context_scale": 2.0,
+    "min_crop_size": 64,
+    "square": true
+  },
+  "segmentation_target_patch": {
+    "enabled": false,
+    "patch_size": 96,
+    "positive_views_only": true
+  },
+  "vision_backbone": {
+    "name": "resnet18",
+    "pretrained": false
+  },
+  "temporal_modality": {
+    "window_index": 0,
+    "max_steps": 16,
+    "min_stride_steps": 1,
+    "max_stride_steps": 1
+  },
+  "temporal_belief": {
+    "window_index": 0,
+    "max_steps": 16,
+    "min_stride_steps": 1,
+    "max_stride_steps": 1
+  }
+}

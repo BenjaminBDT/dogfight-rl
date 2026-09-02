@@ -1,0 +1,64 @@
+{
+  "train": {
+    "tactical_ratio": 1.0,
+    "recovery_ratio": 0.0,
+    "tactical": {
+      "existing": [],
+      "generated": [
+        {
+          "name": "opening_shot_window_f1",
+          "template": "aim_fire",
+          "count": 16,
+          "weight": 0.5,
+          "seed": 4101,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter1"
+        },
+        {
+          "name": "opening_shot_window_f2",
+          "template": "aim_fire",
+          "count": 16,
+          "weight": 0.5,
+          "seed": 4102,
+          "altitude_profile": "mid",
+          "boundary_profile": "center",
+          "arena_preset": "standard_open",
+          "advantaged_role": "fighter2"
+        }
+      ]
+    },
+    "recovery": {
+      "existing": [],
+      "generated": []
+    }
+  },
+  "eval": {
+    "existing": [],
+    "generated": [
+      {
+        "name": "eval_opening_shot_window_f1",
+        "template": "aim_fire",
+        "count": 4,
+        "weight": 0.5,
+        "seed": 5101,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "advantaged_role": "fighter1"
+      },
+      {
+        "name": "eval_opening_shot_window_f2",
+        "template": "aim_fire",
+        "count": 4,
+        "weight": 0.5,
+        "seed": 5102,
+        "altitude_profile": "mid",
+        "boundary_profile": "center",
+        "arena_preset": "standard_open",
+        "advantaged_role": "fighter2"
+      }
+    ]
+  }
+}

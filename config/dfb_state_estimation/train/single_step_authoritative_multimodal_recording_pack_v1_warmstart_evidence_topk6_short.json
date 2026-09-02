@@ -1,0 +1,144 @@
+{
+  "config_version": "0.1.271",
+  "run_name": "single_step_authoritative_multimodal_recording_pack_v1_warmstart_evidence_topk6_short",
+  "dataset_root": "/run/media/ayano/AmusingFun1/dfb_state_estimation_runs/authoritative_multimodal_recording_pack_v1",
+  "dataset_format": "packed",
+  "output_root": "runs/dfb_state_estimation/train/single_step_authoritative_multimodal_recording_pack_v1_warmstart_evidence_topk6_short",
+  "init_vision_from": "runs/dfb_state_estimation/train/single_step_synthetic_target_fighter2_v6_curriculum_full10k_adaptive_seg_visual_only_resnet18/checkpoints/step_064500.pt",
+  "init_audio_from": "runs/dfb_state_estimation/train/audio_only_recordings_dual_observer_min20s_full_symbreak/checkpoints/step_022000.pt",
+  "init_segmentation_from": null,
+  "seed": 7,
+  "device": "cuda",
+  "stage": "single_step",
+  "segmentation_label_mode": "binary_target",
+  "optimizer": {
+    "name": "adam",
+    "lr": 0.0001,
+    "weight_decay": 0.0001
+  },
+  "schedule": {
+    "num_steps": 9500,
+    "batch_size": 16,
+    "grad_clip_norm": 1.0,
+    "log_interval": 20,
+    "eval_interval": 250,
+    "save_interval": 250,
+    "num_workers": 8,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "prefetch_factor": 4
+  },
+  "single_step": {
+    "step_index": 0
+  },
+  "single_step_loss_weights": {
+    "vision": 0.0,
+    "audio": 0.0,
+    "evidence": 1.0
+  },
+  "audio_loss_weights": {
+    "doa": 1.0,
+    "distance": 1.0,
+    "doa_confidence": 1.0,
+    "distance_confidence": 1.0
+  },
+  "audio_confidence": {
+    "doa_half_angle_degrees": 30.0,
+    "dist_half_error": 0.5
+  },
+  "audio_sampling": {
+    "enabled": false,
+    "low_ild_abs_threshold": 0.2,
+    "low_ild_weight": 4.0,
+    "medium_ild_abs_threshold": 1.0,
+    "medium_ild_weight": 2.0,
+    "high_gcc_peak_threshold": 0.999,
+    "high_gcc_peak_weight": 1.5,
+    "high_coherence_threshold": 0.999,
+    "high_coherence_weight": 1.5,
+    "high_lowband_ild_abs_threshold": 1.0,
+    "high_lowband_ild_weight": 1.5,
+    "high_highband_ild_abs_threshold": 1.0,
+    "high_highband_ild_weight": 1.5,
+    "low_energy_sum_threshold": 0.05,
+    "low_energy_weight": 1.25,
+    "max_combined_weight": 6.0
+  },
+  "vision_loss_weights": {
+    "segmentation": 8.0,
+    "keypoints": 1.0,
+    "keypoint_voting": 1.0
+  },
+  "keypoint_supervision": {
+    "visible_weight": 1.0,
+    "projectable_inframe_weight": 0.25
+  },
+  "aggregation_training": {
+    "gt_foreground_mix": 0.0
+  },
+  "evidence": {
+    "position_refine_scale": 1.0
+  },
+  "vision_geometry": {
+    "pnp_top_k_points": 6,
+    "pnp_success_reprojection_threshold": 8.0,
+    "pnp_success_min_selected_support_mean": 0.6,
+    "pnp_success_min_camera_depth": 1.0,
+    "pnp_success_max_camera_depth": 10000.0,
+    "pnp_success_max_camera_translation_norm": 10000.0
+  },
+  "vision_freeze": {
+    "segmentation_module": true
+  },
+  "optimizer_group_scales": {
+    "vision_backbone": 0.0,
+    "vision_segmentation_head": 0.0,
+    "vision_keypoint_head": 0.0,
+    "vision_embedding_head": 0.0,
+    "audio": 0.0,
+    "evidence": 1.0
+  },
+  "single_step_sampling": {
+    "small_target_area_threshold": 100,
+    "small_target_weight": 3.0,
+    "medium_target_area_threshold": 300,
+    "medium_target_weight": 1.5
+  },
+  "segmentation_class_weights": {
+    "background": 1.0,
+    "other_aircraft": 1.0,
+    "target": 8.0
+  },
+  "segmentation_loss": {
+    "mode": "focal",
+    "focal_gamma": 2.0,
+    "dice_weight": 0.2
+  },
+  "segmentation_roi_crop": {
+    "enabled": false,
+    "context_scale": 2.0,
+    "min_crop_size": 64,
+    "square": true
+  },
+  "segmentation_target_patch": {
+    "enabled": false,
+    "patch_size": 64,
+    "positive_views_only": true
+  },
+  "vision_backbone": {
+    "name": "resnet18",
+    "pretrained": false
+  },
+  "temporal_modality": {
+    "window_index": 0,
+    "max_steps": 4,
+    "min_stride_steps": 1,
+    "max_stride_steps": 3
+  },
+  "temporal_belief": {
+    "window_index": 0,
+    "max_steps": 4,
+    "min_stride_steps": 1,
+    "max_stride_steps": 3
+  }
+}

@@ -1,0 +1,23 @@
+(
+    arena_radius: 3000.0,
+    ground_height: 0.0,
+    flight_ceiling_height: 2000.0,
+    ceiling_falloff_range: 250.0,
+    out_of_bounds_grace_seconds: 20.0,
+    fighter1_spawn: (
+        position: (0.0, 900.0, 70.0),
+        rotation_degrees: (0.0, -4.0, 0.0),
+        initial_speed: 58.0,
+        initial_throttle: 0.58,
+    ),
+    fighter2_spawn: (
+        position: (0.0, 900.0, 0.0),
+        rotation_degrees: (0.0, 0.0, 0.0),
+        initial_speed: 60.0,
+        initial_throttle: 0.60,
+    ),
+    obstacles: [],
+    ground_clutter: [],
+    ground_accents: [],
+    sky_markers: [],
+)

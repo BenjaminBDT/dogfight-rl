@@ -1,0 +1,21 @@
+{
+  "entries": [
+    {
+      "name": "builtin_imperfect",
+      "kind": "built_in_ai",
+      "mode": "built_in_ai_imperfect",
+      "weight": 0.75
+    },
+    {
+      "name": "current_policy_self_play",
+      "kind": "self_play",
+      "weight": 0.15
+    },
+    {
+      "name": "passive_boundary_bounce",
+      "kind": "built_in_ai",
+      "mode": "built_in_ai_passive_bounce",
+      "weight": 0.1
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "name": "fixed_update_0014",
+      "kind": "fixed_checkpoint",
+      "weight": 1.0,
+      "checkpoint": "../../../tmp/important_ckpt/update_0014.pt"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+[package]
+name = "dfb_game"
+version = "1.6.21"
+edition = "2024"
+default-run = "dfb_client_gameplay"
+autobins = false
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+
+[features]
+default = []
+python-bindings = ["dep:pyo3"]
+
+[[bin]]
+name = "dfb_client_gameplay"
+path = "src/bin/dfb_client_gameplay.rs"
+
+[[bin]]
+name = "dfb_server"
+path = "src/bin/dfb_server.rs"
+
+[[bin]]
+name = "dfb_client_observer"
+path = "src/bin/dfb_client_observer.rs"
+
+[[bin]]
+name = "dfb_tool_dataset"
+path = "src/bin/dfb_tool_dataset.rs"
+
+[[bin]]
+name = "dfb_tool_keybindings"
+path = "src/bin/dfb_tool_keybindings.rs"
+
+[[bin]]
+name = "dfb_launcher"
+path = "src/bin/dfb_launcher.rs"
+
+[dependencies]
+anyhow = { workspace = true }
+bevy = { workspace = true }
+cpal = { workspace = true }
+crossterm = { workspace = true }
+half = { workspace = true }
+hex = { workspace = true }
+libc = { workspace = true }
+ndarray = { workspace = true }
+ndarray-npy = { workspace = true }
+rand = { workspace = true }
+rand_chacha = { workspace = true }
+ratatui = { workspace = true }
+ron = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sha2 = { workspace = true }
+time = { workspace = true }
+zip = { workspace = true }
+pyo3 = { workspace = true, optional = true, features = ["extension-module", "abi3-py311"] }

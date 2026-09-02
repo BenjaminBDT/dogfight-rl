@@ -1,0 +1,58 @@
+{
+  "config_version": "v1",
+  "run_name": "segmentation_only_synthetic_v5c_binary_focal_dice_filtered_p5_n24_resnet18_pretrained_short",
+  "dataset_root": "runs/dfb_state_estimation/synthetic_visual_dataset_v5c_msaa_trial_filtered_p5_n24",
+  "dataset_format": "synthetic_segmentation",
+  "output_root": "runs/dfb_state_estimation/train/segmentation_only_synthetic_v5c_binary_focal_dice_filtered_p5_n24_resnet18_pretrained_short",
+  "seed": 0,
+  "device": "cuda",
+  "stage": "segmentation_only",
+  "segmentation_label_mode": "binary_target",
+  "vision_backbone": {
+    "name": "resnet18",
+    "pretrained": true
+  },
+  "optimizer": {
+    "name": "adam",
+    "lr": 0.001,
+    "weight_decay": 0.0
+  },
+  "schedule": {
+    "num_steps": 300,
+    "batch_size": 8,
+    "grad_clip_norm": 1.0,
+    "log_interval": 20,
+    "eval_interval": 50,
+    "save_interval": 100
+  },
+  "single_step": {
+    "step_index": 0
+  },
+  "single_step_loss_weights": {
+    "vision": 1.0,
+    "audio": 1.0,
+    "evidence": 0.01
+  },
+  "segmentation_class_weights": {
+    "background": 0.02,
+    "other_aircraft": 0.5,
+    "target": 16.0
+  },
+  "segmentation_loss": {
+    "mode": "focal",
+    "focal_gamma": 2.0,
+    "dice_weight": 1.0
+  },
+  "temporal_modality": {
+    "window_index": 10,
+    "max_steps": 8,
+    "min_stride_steps": 1,
+    "max_stride_steps": 1
+  },
+  "temporal_belief": {
+    "window_index": 10,
+    "max_steps": 8,
+    "min_stride_steps": 1,
+    "max_stride_steps": 1
+  }
+}
