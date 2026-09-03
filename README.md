@@ -1,67 +1,67 @@
 # dogfight-rl
 
-A research-grade dogfight (air combat) simulation and deep reinforcement learning project: a Rust/Bevy simulation engine drives a Python DRL pipeline that trains autonomous fighter agents through PPO, behavioral cloning, DAgger, and self-play.
+研究级空战（dogfight）仿真与深度强化学习项目：Rust/Bevy 仿真引擎驱动 Python DRL 训练管线，通过 PPO、行为克隆、DAgger 与自博弈训练自主空战智能体。
 
-## Background & Motivation
+## 背景与动机
 
-Air combat maneuvering (ACM) is a classic benchmark for sequential decision-making: continuous control, partial observability, and sparse, safety-critical rewards. This project explores how far a self-trained agent can go in a high-fidelity 6-DOF flight simulation, from imitation of scripted teachers to fully self-play-driven policies — all in a single integrated codebase with contract-pinned observation/action schemas.
+空战机动（ACM）是序列决策的经典基准：连续控制、部分可观测、奖励稀疏且涉及安全。本项目探索自训练智能体在高保真六自由度飞行仿真中能达到的水平——从模仿脚本教师到完全自博弈的策略，全部集成在单一代码库中，并通过契约固定的观察/动作 schema 保证一致性。
 
-## Live Demo
+## 演示
 
-The red fighter is the trained agent (RL policy). Two scenarios:
+红色战机为训练后的智能体（RL 策略），两个场景：
 
-**Defensive maneuvering under tail attack** — agent's own view:
-![Defensive maneuver demo](docs/demo-defense.gif)
+**被咬尾时的防御机动** —— 智能体自身视角：
+![防御机动演示](docs/demo-defense.gif)
 
 <video controls src="docs/demo-defense.mp4" width="100%"></video>
 
-**Head-on engagement** — recorded from the opponent's (yellow fighter) view:
-![Head-on engagement demo](docs/demo-head-on.gif)
+**对头交战** —— 对手（黄色战机）视角：
+![对头交战演示](docs/demo-head-on.gif)
 
 <video controls src="docs/demo-head-on.mp4" width="100%"></video>
 
-## Features
+## 功能特性
 
-- **6-DOF flight simulation** built on Rust + Bevy 0.18, with a pyo3 Python binding for tight RL-loop integration
-- **69-dimensional contract-driven observation space** (37 fields: enemy + self relative geometry and kinematics in body frames, plus episode time), pinned by a versioned JSON policy contract with SHA-256 validation
-- **Hybrid action space**: 4 continuous (throttle/pitch/roll/yaw) + 3 binary (brake/fire_gun/repair)
-- **Multi-stage training curriculum**: behavioral cloning (BC) warm-start → PPO fine-tuning → DAgger rounds → self-play (model controls both fighters)
-- **Composable truncation policy system** (time-limit, opening-shot window, tactical-advantage) and scene pool for curriculum evaluation
-- **Full ML tooling**: dataset packing from recordings, observation normalizers, checkpoint architecture migration, live model piloting
+- **六自由度飞行仿真**：基于 Rust + Bevy 0.18 构建，通过 pyo3 Python 绑定实现紧密的 RL 循环集成
+- **69 维契约驱动观察空间**（37 个字段：敌机/本机在机体坐标系下的相对几何与运动学，以及回合时间），由带 SHA-256 校验的版本化 JSON 策略契约固定
+- **混合动作空间**：4 个连续（油门/俯仰/滚转/偏航）+ 3 个二值（刹车/开火/维修）
+- **多阶段训练课程**：行为克隆（BC）热启动 → PPO 微调 → DAgger 轮次 → 自博弈（模型控制双方战机）
+- **可组合截断策略系统**（时间限制、开火窗口、战术优势）与场景池，用于课程评估
+- **完整 ML 工具链**：从录制数据打包数据集、观察归一化器、checkpoint 架构迁移、实时模型试飞
 
-## Tech Stack
+## 技术栈
 
-- **Rust / Bevy 0.18** — simulation engine, physics, rendering, recording
-- **pyo3 / maturin** — Python bindings bridging sim and training
-- **PyTorch** — neural networks and PPO/BC/DAgger training
-- **69-dim observation space**, hybrid continuous+binary action head (clipped-normal policy)
-- Self-play and opponent pools (built-in AI variants + model)
+- **Rust / Bevy 0.18** —— 仿真引擎、物理、渲染、录制
+- **pyo3 / maturin** —— 连接仿真与训练的 Python 绑定
+- **PyTorch** —— 神经网络与 PPO/BC/DAgger 训练
+- **69 维观察空间**、混合连续+二值动作头（clipped-normal 策略）
+- 自博弈与对手池（内置 AI 变体 + 模型）
 
-## Quick Start
+## 快速开始
 
-Build the Rust simulation engine:
+构建 Rust 仿真引擎：
 
 ```bash
 cargo build --release
 ```
 
-Inspect the PPO training entry point (module layout: `project_src/dfb_reinforcement_learning`):
+查看 PPO 训练入口（模块布局：`project_src/dfb_reinforcement_learning`）：
 
 ```bash
 PYTHONPATH=project_src python -m dfb_reinforcement_learning.train.train_ppo --help
 ```
 
-## Results
+## 结果
 
-Over a 1000-episode evaluation window, the trained agent achieves:
+在 1000 局评估窗口内，训练后的智能体达到：
 
-- **Enemy destruction rate: 0.78**
-- **Self destruction rate: 0.42**
+- **敌机损毁率：0.78**
+- **自机损毁率：0.42**
 
-## Vibe Coding Notice
+## Vibe Coding 说明
 
-The core algorithms (observation/reward design, self-play rollout architecture, truncation policies) and the overall system architecture were designed by the author. Engineering implementation was accelerated with AI coding agents (Hermes, Codex, etc.). The Rust simulation engine and Python training pipeline are original work.
+核心算法（观察/奖励设计、自博弈 rollout 架构、截断策略）与整体系统架构由作者自主设计。工程实现借助 AI 编程智能体（Hermes、Codex 等）加速。Rust 仿真引擎与 Python 训练管线均为原创工作。
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT —— 见 [LICENSE](LICENSE)。
