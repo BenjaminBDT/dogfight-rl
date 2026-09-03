@@ -50,11 +50,7 @@ PYTHONPATH=project_src python -m dfb_reinforcement_learning.train.train_ppo --he
 
 ## 结果
 
-在 1000 局评估窗口内，训练后的智能体达到：
-
-- **敌机损毁率：0.78**
-- **自机损毁率：0.42**
-- **共同损毁率：0.20**
+训练后的智能体在 1000 局评估窗口内，敌机损毁率0.78
 
 ## Vibe Coding 说明
 
