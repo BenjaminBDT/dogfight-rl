@@ -6,6 +6,20 @@ A research-grade dogfight (air combat) simulation and deep reinforcement learnin
 
 Air combat maneuvering (ACM) is a classic benchmark for sequential decision-making: continuous control, partial observability, and sparse, safety-critical rewards. This project explores how far a self-trained agent can go in a high-fidelity 6-DOF flight simulation, from imitation of scripted teachers to fully self-play-driven policies — all in a single integrated codebase with contract-pinned observation/action schemas.
 
+## Live Demo
+
+The red fighter is the trained agent (RL policy). Two scenarios:
+
+**Defensive maneuvering under tail attack** — agent's own view:
+![Defensive maneuver demo](docs/demo-defense.gif)
+
+<video controls src="docs/demo-defense.mp4" width="100%"></video>
+
+**Head-on engagement** — recorded from the opponent's (yellow fighter) view:
+![Head-on engagement demo](docs/demo-head-on.gif)
+
+<video controls src="docs/demo-head-on.mp4" width="100%"></video>
+
 ## Features
 
 - **6-DOF flight simulation** built on Rust + Bevy 0.18, with a pyo3 Python binding for tight RL-loop integration
